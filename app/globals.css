@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
+@theme {
+  --color-navy: #17384f;
+  --color-ocean: #317aa8;
+  --color-sky: #d8edf7;
+  --color-sand: #eadfcb;
+  --color-wood: #c39a70;
+  --color-ivory: #fbfaf6;
+  --color-slate: #5f6975;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  background: #fbfaf6;
+  color: #17384f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: #fbfaf6;
+  color: #17384f;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+:focus-visible {
+  outline: 3px solid #317aa8;
+  outline-offset: 3px;
+}
+
+.section {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #317aa8;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.125rem;
+  padding-inline: 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: #17384f;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #317aa8;
+}
+
+.btn-outline {
+  border: 1px solid rgb(23 56 79 / 0.18);
+  color: #17384f;
+}
+
+.btn-outline:hover {
+  border-color: #317aa8;
+  color: #317aa8;
+}
+
+.card {
+  border: 1px solid rgb(23 56 79 / 0.1);
+  border-radius: 0.25rem;
+  background: rgb(255 255 255 / 0.82);
+  box-shadow: 0 18px 50px rgb(23 56 79 / 0.08);
+}
+
+.field {
+  min-height: 3rem;
+  width: 100%;
+  border: 1px solid rgb(23 56 79 / 0.16);
+  border-radius: 0.125rem;
+  background: #fff;
+  padding: 0.75rem 0.85rem;
+  color: #17384f;
+}
+
+.field:focus {
+  border-color: #317aa8;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(49 122 168 / 0.18);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
 }
