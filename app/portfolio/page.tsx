@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { CtaBand } from "../components/CtaBand";
 import { JsonLd } from "../components/JsonLd";
+import { PortfolioGallery } from "../components/PortfolioGallery";
 import { portfolioImages, siteUrl } from "../data/site";
 import { pageMetadata } from "../lib/seo";
 
@@ -39,27 +39,7 @@ export default function PortfolioPage() {
 
       <section className="section">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {portfolioImages.map((image, index) => (
-              <a
-                key={image.src}
-                href={image.src}
-                className="group relative aspect-[4/3] overflow-hidden rounded-sm bg-sand"
-                aria-label={`Otwórz zdjęcie realizacji ${index + 1}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
-                <span className="absolute inset-x-0 bottom-0 bg-navy/70 px-4 py-3 text-sm font-medium text-white opacity-0 transition group-hover:opacity-100">
-                  Realizacja {index + 1}
-                </span>
-              </a>
-            ))}
-          </div>
+          <PortfolioGallery images={portfolioImages} />
         </div>
       </section>
 

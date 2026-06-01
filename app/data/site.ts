@@ -206,11 +206,7 @@ export const portfolioImages = [
     alt: "Kompletny pokład jachtowy wykończony pianką EVA",
   },
   {
-    src: "/images/cnc2.avif",
-    alt: "Elementy EVA przygotowane do obróbki CNC",
-  },
-  {
-    src: "/images/cnc3.avif",
+    src: "/images/hero.avif",
     alt: "Precyzyjne wycinanie paneli EVA",
   },
 ];

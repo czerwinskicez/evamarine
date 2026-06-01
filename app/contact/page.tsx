@@ -38,31 +38,44 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-          <aside className="card h-fit p-7">
-            <h2 className="text-2xl font-semibold text-navy">Dane kontaktowe</h2>
-            <address className="mt-6 space-y-4 not-italic text-slate">
-              <p>
-                <span className="block text-sm font-semibold text-navy">Obszar działania</span>
-                {company.region}, {company.country}
-              </p>
-              <p>
-                <span className="block text-sm font-semibold text-navy">Adres</span>
-                {company.address}
-              </p>
-              <p>
-                <span className="block text-sm font-semibold text-navy">E-mail</span>
-                <a href={`mailto:${company.email}`} className="text-ocean hover:text-navy">
-                  {company.email}
-                </a>
-              </p>
-              <p>
-                <span className="block text-sm font-semibold text-navy">Telefon</span>
-                <a href={`tel:${company.phone.replaceAll(" ", "")}`} className="text-ocean hover:text-navy">
-                  {company.phone}
-                </a>
-              </p>
-            </address>
-          </aside>
+          <div className="grid h-fit gap-6">
+            <aside className="card p-7">
+              <h2 className="text-2xl font-semibold text-navy">Dane kontaktowe</h2>
+              <address className="mt-6 space-y-4 not-italic text-slate">
+                <p>
+                  <span className="block text-sm font-semibold text-navy">Obszar działania</span>
+                  {company.region}, {company.country}
+                </p>
+                <p>
+                  <span className="block text-sm font-semibold text-navy">Adres</span>
+                  {company.address}
+                </p>
+                <p>
+                  <span className="block text-sm font-semibold text-navy">E-mail</span>
+                  <a href={`mailto:${company.email}`} className="text-ocean hover:text-navy">
+                    {company.email}
+                  </a>
+                </p>
+                <p>
+                  <span className="block text-sm font-semibold text-navy">Telefon</span>
+                  <a href={`tel:${company.phone.replaceAll(" ", "")}`} className="text-ocean hover:text-navy">
+                    {company.phone}
+                  </a>
+                </p>
+              </address>
+            </aside>
+
+            <div className="overflow-hidden rounded-sm border border-navy/10 bg-white shadow-sm">
+              <iframe
+                title="Mapa dojazdu do EVA Marine w Spytkowie"
+                src="https://www.google.com/maps?q=54.06844442379344,21.812461652525865&z=11&output=embed"
+                className="h-[360px] w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
           <div className="card p-6 md:p-8">
             <h2 className="text-2xl font-semibold text-navy">Formularz kontaktowy</h2>
             <p className="mt-3 text-sm leading-7 text-slate">
@@ -71,20 +84,6 @@ export default function ContactPage() {
             <div className="mt-6">
               <ContactForm />
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-20">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="overflow-hidden rounded-sm border border-navy/10 bg-white shadow-sm">
-            <iframe
-              title="Mapa dojazdu do EVA Marine w Spytkowie"
-              src="https://www.google.com/maps?q=54.06844442379344,21.812461652525865&z=15&output=embed"
-              className="h-[420px] w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
           </div>
         </div>
       </section>

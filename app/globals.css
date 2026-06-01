@@ -6,6 +6,7 @@
   --color-sky: #d8edf7;
   --color-sand: #eadfcb;
   --color-wood: #c39a70;
+  --color-gold: #e2b866;
   --color-ivory: #fbfaf6;
   --color-slate: #5f6975;
 }
@@ -61,6 +62,14 @@ summary::-webkit-details-marker {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #317aa8;
+}
+
+.eyebrow.text-gold {
+  color: #e2b866;
+}
+
+.eyebrow.text-white {
+  color: #fff;
 }
 
 .btn {

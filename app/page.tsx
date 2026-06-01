@@ -47,7 +47,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-navy/62" />
         <div className="mx-auto flex min-h-[calc(100vh-74px)] max-w-7xl flex-col justify-end px-5 pb-16 pt-24 lg:px-8">
           <div className="max-w-3xl">
-            <p className="eyebrow text-wood">Podłogi EVA do jachtów i łodzi</p>
+            <p className="eyebrow text-gold">Podłogi EVA do jachtów i łodzi</p>
             <h1 className="mt-5 text-balance text-5xl font-semibold leading-tight md:text-7xl">
               Wyjątkowe pokłady idealnie dobrane do Twojego jachtu
             </h1>
@@ -154,12 +154,15 @@ export default function Home() {
 
       <section className="section bg-navy text-white">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeader
-            eyebrow="Opinie klientów"
-            title="Sprawdzone na wodzie, nie tylko na ekranie"
-            description="Klienci doceniają jasną komunikację, szybkie tempo realizacji i trwały efekt końcowy."
-            align="center"
-          />
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow text-white">Opinie klientów</p>
+            <h2 className="mt-3 text-balance text-3xl font-semibold text-white md:text-4xl">
+              Sprawdzone na wodzie, nie tylko na ekranie
+            </h2>
+            <p className="mt-4 text-pretty text-base leading-8 text-white/78 md:text-lg">
+              Klienci doceniają jasną komunikację, szybkie tempo realizacji i trwały efekt końcowy.
+            </p>
+          </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {testimonials.map((testimonial) => (
               <figure key={testimonial.author} className="rounded-sm border border-white/15 bg-white/8 p-6">
