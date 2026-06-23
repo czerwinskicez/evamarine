@@ -7,10 +7,10 @@ import { company, services, siteUrl } from "../data/site";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Usługi - podłogi EVA, CAD/CAM, CNC i montaż",
+  title: "Usługi - podłogi EVA, skanowanie i montaż",
   path: "/services",
   description:
-    "Usługi EVA Marine: produkcja podłóg EVA, pomiary, szablony, projektowanie CAD/CAM, frezowanie CNC, montaż pokładów i zimowanie jachtów na Mazurach.",
+    "Usługi EVA Marine: skanowanie pokładu, indywidualny projekt, wykonanie podłogi EVA na wymiar oraz profesjonalny montaż i wklejenie w Giżycku.",
 });
 
 const servicesJsonLd = {
@@ -41,11 +41,11 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow">Usługi</p>
           <h1 className="mt-4 max-w-4xl text-balance text-4xl font-semibold text-navy md:text-6xl">
-            Podłogi EVA i obsługa jachtów od projektu po montaż
+            Podłogi EVA od skanowania pokładu po profesjonalny montaż
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate">
-            Pomagamy zrealizować kompletny projekt pokładu jachtowego: od pomiarów,
-            przez dokumentację CAD/CAM i frezowanie CNC, po gotowy montaż na jednostce.
+            Pomagamy zrealizować kompletny projekt pokładu jachtowego: od skanowania,
+            przez indywidualny projekt i wykonanie na wymiar, po wklejenie pianki na jednostce.
           </p>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default function ServicesPage() {
           <SectionHeader
             eyebrow="Dla kogo"
             title="Jachty prywatne, czarterowe i łodzie użytkowane sezonowo"
-            description="Projektujemy rozwiązania dla właścicieli jednostek, armatorów, firm czarterowych i osób przygotowujących jacht do sezonu na Mazurach."
+            description="Projektujemy rozwiązania dla właścicieli jednostek, armatorów i firm czarterowych, które chcą poprawić komfort, bezpieczeństwo oraz wygląd pokładu."
             align="center"
           />
         </div>

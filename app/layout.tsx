@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
+import { CookieConsent } from "./components/CookieConsent";
 import { Footer } from "./components/Footer";
+import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import { JsonLd } from "./components/JsonLd";
 import { Navigation } from "./components/Navigation";
 import { company, services, siteUrl } from "./data/site";
@@ -12,14 +15,14 @@ export const metadata: Metadata = {
     template: "%s | EVA Marine",
   },
   description:
-    "Personalizowane podłogi EVA, pokłady jachtowe, projektowanie CAD/CAM, frezowanie CNC i zimowanie jachtów w Giżycku oraz na Mazurach.",
+    "Profesjonalne podłogi jachtowe z pianki EVA: skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż w Giżycku oraz na Mazurach.",
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
     title: "EVA Marine | Podłogi EVA i pokłady jachtowe Mazury",
     description:
-      "Produkcja i montaż personalizowanych podłóg EVA do jachtów i łodzi. Mazury, Giżycko, realizacje w całej Polsce.",
+      "Kompleksowe podłogi EVA do jachtów i łodzi: materiał, projekt, wykonanie na wymiar oraz profesjonalny montaż. Giżycko i okolice.",
     url: siteUrl,
     siteName: "EVA Marine",
     locale: "pl_PL",
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EVA Marine | Podłogi EVA i pokłady jachtowe Mazury",
     description:
-      "Personalizowane pokłady jachtowe EVA, CNC, montaż i zimowanie jachtów na Mazurach.",
+      "Personalizowane pokłady jachtowe EVA, skanowanie, CNC i profesjonalny montaż na Mazurach.",
     images: ["/images/hero.avif"],
   },
 };
@@ -85,11 +88,43 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body>
+        <Script
+          id="google-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                var analyticsStorage = 'denied';
+
+                try {
+                  var storedConsent = window.localStorage.getItem('evaMarineConsent.v1');
+                  if (storedConsent) {
+                    var parsedConsent = JSON.parse(storedConsent);
+                    if (parsedConsent && parsedConsent.version === 1 && typeof parsedConsent.analytics === 'boolean') {
+                      analyticsStorage = parsedConsent.analytics ? 'granted' : 'denied';
+                    }
+                  }
+                } catch (error) {}
+
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+                window.gtag('consent', 'default', {
+                  ad_storage: 'denied',
+                  ad_user_data: 'denied',
+                  ad_personalization: 'denied',
+                  analytics_storage: analyticsStorage
+                });
+              })();
+            `,
+          }}
+        />
         <JsonLd data={localBusinessJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
+        <GoogleAnalytics />
       </body>
     </html>
   );

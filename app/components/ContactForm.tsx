@@ -86,7 +86,7 @@ export function ContactForm() {
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
           className="field min-h-36 resize-y"
-          placeholder="Opisz jacht, zakres prac, lokalizację i preferowany termin."
+          placeholder="Opisz jacht, zakres prac, lokalizację, szablony i preferowany termin."
         />
       </label>
 

@@ -9,17 +9,19 @@ export function Navigation() {
         aria-label="Główna nawigacja"
         className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
       >
-        <Link href="/" className="flex items-center gap-3" aria-label="EVA Marine - strona główna">
+        <Link
+          href="/"
+          className="group flex min-w-0 items-center"
+          aria-label="EVA Marine - strona główna"
+        >
           <Image
             src="/images/logo.avif"
             alt=""
-            width={42}
-            height={42}
-            className="h-10 w-10 rounded-full object-cover"
+            width={168}
+            height={52}
+            className="h-12 w-auto max-w-[10.5rem] object-contain transition duration-300 ease-out group-hover:scale-[1.035] group-hover:brightness-105 sm:h-13 sm:max-w-[11.5rem]"
+            priority
           />
-          <span className="text-lg font-semibold tracking-[0.08em] text-navy">
-            {company.name}
-          </span>
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">

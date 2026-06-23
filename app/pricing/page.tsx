@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { CtaBand } from "../components/CtaBand";
 import { JsonLd } from "../components/JsonLd";
-import { pricing, siteUrl } from "../data/site";
+import { faq, pricing, siteUrl } from "../data/site";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Cennik - wycena podłóg EVA i zimowania jachtów",
+  title: "Cennik - podłogi EVA 1100 zł/m²",
   path: "/pricing",
   description:
-    "Cennik EVA Marine: szablony podłóg EVA, produkcja pokładów jachtowych za m², zimowanie jachtów oraz indywidualna wycena projektów na Mazurach.",
+    "Cennik EVA Marine: kompleksowa realizacja podłogi EVA 1100 zł/m². Cena obejmuje materiał, projekt, wykonanie na wymiar oraz montaż.",
 });
 
 const breadcrumbJsonLd = {
@@ -20,19 +20,33 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
 export default function PricingPage() {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={faqJsonLd} />
       <section className="section bg-sand/35">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow">Cennik</p>
           <h1 className="mt-4 max-w-4xl text-balance text-4xl font-semibold text-navy md:text-6xl">
-            Przejrzysta wycena podłogi EVA i usług jachtowych
+            Przejrzysta wycena podłogi EVA
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate">
-            Każdy projekt wyceniamy indywidualnie, uwzględniając wielkość pokładu,
-            złożoność wzoru, personalizację, pomiary i sposób montażu.
+            Kompleksowa realizacja kosztuje 1100 zł/m² i obejmuje materiał,
+            indywidualny projekt, wykonanie podłogi na wymiar oraz profesjonalny montaż.
           </p>
         </div>
       </section>
@@ -53,11 +67,31 @@ export default function PricingPage() {
         <div className="mx-auto mt-10 max-w-3xl px-5 text-center lg:px-8">
           <p className="text-sm leading-7 text-slate">
             Finalny koszt zależy od powierzchni, liczby elementów, wzoru, kolorystyki,
-            personalizacji oraz lokalizacji jednostki. Przed rozpoczęciem prac otrzymasz szczegółową ofertę.
+            personalizacji oraz lokalizacji jednostki. Szczegółową wycenę przygotowujemy po pomiarach
+            na jachcie albo na podstawie prawidłowo wykonanych szablonów.
           </p>
           <Link href="/contact" className="btn btn-primary mt-6">
             Poproś o wycenę
           </Link>
+        </div>
+      </section>
+
+      <section className="section bg-ivory">
+        <div className="mx-auto max-w-4xl px-5 lg:px-8">
+          <p className="eyebrow text-center">FAQ</p>
+          <h2 className="mt-3 text-center text-3xl font-semibold text-navy md:text-4xl">
+            Najczęstsze pytania o wycenę i realizację
+          </h2>
+          <div className="mt-10 grid gap-4">
+            {faq.map((item) => (
+              <details key={item.question} className="card p-6">
+                <summary className="cursor-pointer text-lg font-semibold text-navy">
+                  {item.question}
+                </summary>
+                <p className="mt-4 text-sm leading-7 text-slate">{item.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

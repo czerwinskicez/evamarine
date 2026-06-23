@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsLink } from "./CookieConsent";
 import { company, navigation } from "../data/site";
 
 export function Footer() {
@@ -8,8 +9,8 @@ export function Footer() {
         <div>
           <p className="text-xl font-semibold">{company.name}</p>
           <p className="mt-4 max-w-md text-sm leading-7 text-white/75">
-            Personalizowane podłogi EVA, pokłady jachtowe, projektowanie CAD/CAM,
-            frezowanie CNC i zimowanie jachtów na Mazurach.
+            Profesjonalne podłogi jachtowe z pianki EVA: skanowanie pokładu,
+            indywidualny projekt, wykonanie na wymiar i montaż na Mazurach.
           </p>
         </div>
         <div>
@@ -44,8 +45,11 @@ export function Footer() {
           </address>
         </div>
       </div>
-      <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-white/60">
-        © {new Date().getFullYear()} EVA Marine. Wszystkie prawa zastrzeżone.
+      <div className="border-t border-white/10 px-5 py-5">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center text-xs text-white/60 sm:flex-row sm:text-left">
+          <p>© {new Date().getFullYear()} EVA Marine. Wszystkie prawa zastrzeżone.</p>
+          <CookieSettingsLink />
+        </div>
       </div>
     </footer>
   );

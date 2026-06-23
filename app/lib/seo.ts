@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteUrl } from "../data/site";
 
 const defaultDescription =
-  "EVA Marine projektuje, produkuje i montuje personalizowane podłogi EVA oraz pokłady jachtowe na Mazurach, w Giżycku i dla klientów z całej Polski.";
+  "EVA Marine wykonuje profesjonalne podłogi jachtowe z pianki EVA: skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż w Giżycku.";
 
 export function pageMetadata({
   title,

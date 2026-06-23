@@ -7,7 +7,7 @@ export const metadata = pageMetadata({
   title: "Kontakt - darmowa wycena podłogi EVA",
   path: "/contact",
   description:
-    "Skontaktuj się z EVA Marine w Giżycku. Darmowa konsultacja i wycena podłogi EVA, pokładu jachtowego, montażu lub zimowania jachtu na Mazurach.",
+    "Skontaktuj się z EVA Marine w Giżycku. Wycena podłogi EVA, skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż.",
 });
 
 const breadcrumbJsonLd = {
@@ -30,8 +30,8 @@ export default function ContactPage() {
             Omówmy Twój następny projekt
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate">
-            Wypełnij formularz albo zadzwoń, aby umówić darmową konsultację.
-            Im więcej informacji o jednostce podasz, tym szybciej przygotujemy konkretną odpowiedź.
+            Wypełnij formularz albo zadzwoń, aby omówić podłogę EVA do Twojej jednostki.
+            Szczegółową wycenę przygotujemy po pomiarach na jachcie albo na podstawie prawidłowo wykonanych szablonów.
           </p>
         </div>
       </section>
@@ -80,6 +80,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold text-navy">Formularz kontaktowy</h2>
             <p className="mt-3 text-sm leading-7 text-slate">
               Opisz jacht, lokalizację, oczekiwany zakres prac i preferowany termin realizacji.
+              Jeżeli masz już szablony, zaznacz to w wiadomości.
             </p>
             <div className="mt-6">
               <ContactForm />

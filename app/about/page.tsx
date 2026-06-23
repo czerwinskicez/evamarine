@@ -9,7 +9,7 @@ export const metadata = pageMetadata({
   title: "O nas - doświadczenie jachtowe na Mazurach",
   path: "/about",
   description:
-    "Poznaj EVA Marine z Giżycka. Ponad 10 lat pracy z jachtami, projektowanie podłóg EVA, CAD/CAM, CNC i praktyczne podejście do pokładów jachtowych.",
+    "Poznaj EVA Marine z Giżycka. Ponad 10 lat pracy z jachtami, skanowanie pokładów, projektowanie podłóg EVA, CNC i praktyczne podejście do montażu.",
 });
 
 const breadcrumbJsonLd = {
@@ -38,7 +38,7 @@ export default function AboutPage() {
               rozumiemy realia eksploatacji łodzi w sezonie, w porcie i podczas intensywnego użytkowania.
             </p>
             <p className="mt-4 text-lg leading-8 text-slate">
-              Specjalizujemy się w projektowaniu, produkcji i montażu podłóg z pianki EVA.
+              Specjalizujemy się w skanowaniu, projektowaniu, wykonaniu i montażu podłóg z pianki EVA.
               Łączymy CAD/CAM, frezowanie CNC i praktyczną wiedzę żeglarską, aby pokład był
               trwały, bezpieczny, wygodny i dopasowany wizualnie do konkretnej jednostki.
             </p>
@@ -80,7 +80,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
           <div className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-              <Image src="/images/about2.avif" alt="Prace pomiarowe przy pokładzie jachtu" fill sizes="50vw" className="object-cover" />
+              <Image src="/images/about2.avif" alt="Skanowanie i pomiary przy pokładzie jachtu" fill sizes="50vw" className="object-cover" />
             </div>
             <div className="relative mt-10 aspect-[4/5] overflow-hidden rounded-sm">
               <Image src="/images/about3.avif" alt="Detal projektu i wykonania podłogi EVA" fill sizes="50vw" className="object-cover" />

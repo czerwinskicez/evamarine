@@ -16,7 +16,7 @@
 
 ## Treści i dane firmy
 - Zweryfikuj finalnie numer telefonu, adres, e-mail i obszar działania.
-- Potwierdź ceny: szablony `1500 zł`, produkcja `700 zł/m²`, zimowanie `1000 zł`.
+- Potwierdź cenę kompleksowej realizacji podłogi EVA: `1100 zł/m²` oraz dojazd `3 zł/km` liczony w obie strony.
 - Przejrzyj wszystkie opisy usług i portfolio pod kątem zgodności z ofertą.
 
 ## SEO i analityka
@@ -24,7 +24,8 @@
 - Wyślij sitemapę: `https://evamarine.pl/sitemap.xml`.
 - Sprawdź `https://evamarine.pl/robots.txt`.
 - Zweryfikuj dane strukturalne w Google Rich Results Test.
-- Dodaj narzędzie analityczne, np. Vercel Analytics lub Google Analytics, jeśli ma być mierzone wejście z wyszukiwarki.
+- Jeśli ma działać Google Analytics, dodaj w Vercel zmienną `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+- Po wdrożeniu sprawdź Google Consent Mode w Tag Assistant i zweryfikuj, że analityka uruchamia się dopiero po zgodzie.
 
 ## Odbiór wizualny
 - Sprawdź stronę na telefonie, tablecie i desktopie.

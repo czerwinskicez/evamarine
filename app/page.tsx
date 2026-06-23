@@ -10,7 +10,7 @@ export const metadata = pageMetadata({
   title: "Podłogi EVA i pokłady jachtowe Mazury",
   path: "/",
   description:
-    "EVA Marine z Giżycka projektuje, produkuje i montuje personalizowane podłogi EVA do jachtów i łodzi. Pokłady jachtowe, CNC, Mazury i cała Polska.",
+    "EVA Marine z Giżycka wykonuje profesjonalne podłogi jachtowe z pianki EVA: skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż.",
 });
 
 const serviceJsonLd = {
@@ -52,8 +52,8 @@ export default function Home() {
               Wyjątkowe pokłady idealnie dobrane do Twojego jachtu
             </h1>
             <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-white/82">
-              Projektujemy, produkujemy i montujemy trwałe podłogi EVA z serca Mazur.
-              Łączymy doświadczenie żeglarskie, precyzję CNC i indywidualne podejście do każdej jednostki.
+              Skanujemy pokład, przygotowujemy indywidualny projekt, wykonujemy podłogę na wymiar
+              i profesjonalnie wklejamy piankę EVA. Pracujemy w Giżycku i okolicach.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/services" className="btn bg-white text-navy hover:bg-sand">
@@ -71,8 +71,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeader
             eyebrow="Nasze usługi"
-            title="Pełny proces od pomiaru po gotowy pokład"
-            description="Obsługujemy produkcję podłóg EVA, projektowanie CAD/CAM, frezowanie CNC, montaż oraz zimowanie jednostek. Dobieramy zakres prac do konkretnej jednostki, sposobu użytkowania i oczekiwanego efektu wizualnego."
+            title="Pełny proces od skanowania po gotowy pokład"
+            description="Kompleksowa realizacja obejmuje skanowanie pokładu, przygotowanie indywidualnego projektu, wykonanie podłogi EVA na wymiar oraz profesjonalny montaż i wklejenie."
             align="center"
           />
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -97,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section bg-ivory">
+      <section className="bg-[#f3f2ef] py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => (
@@ -115,7 +115,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Jak pracujemy"
             title="Transparentny proces i precyzja na każdym etapie"
-            description="Każdy projekt prowadzimy tak, aby klient znał zakres, koszt i efekt jeszcze przed rozpoczęciem produkcji."
+            description="Każdy projekt prowadzimy tak, aby klient znał zakres, koszt i efekt jeszcze przed rozpoczęciem wykonania podłogi."
             align="center"
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">

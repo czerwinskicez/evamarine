@@ -24,7 +24,7 @@ export const values = [
   {
     title: "Bezpłatna wycena",
     description:
-      "Przygotujemy ofertę dopasowaną do Twojej łodzi szybko i bez zobowiązań.",
+      "Szczegółową wycenę przygotowujemy po dokładnych pomiarach na jachcie albo na podstawie szablonów wykonanych według instrukcji.",
   },
   {
     title: "Wysoka jakość",
@@ -34,7 +34,7 @@ export const values = [
   {
     title: "Sprawna realizacja",
     description:
-      "Prowadzimy projekt od pomiaru po montaż, dbając o terminy i jasną komunikację.",
+      "Prowadzimy projekt od skanowania pokładu po profesjonalny montaż i wklejenie pianki.",
   },
   {
     title: "Indywidualny projekt",
@@ -45,28 +45,28 @@ export const values = [
 
 export const services = [
   {
-    title: "Produkcja podłóg z pianki EVA",
+    title: "Kompleksowe podłogi z pianki EVA",
     slug: "podlogi-eva",
     image: "/images/podloga1.avif",
     alt: "Dopasowana podłoga EVA na pokładzie jachtu",
     description:
-      "Wykonujemy trwałe, estetyczne i antypoślizgowe pokłady z pianki EVA do jachtów i łodzi. Oferujemy różne kolory, frezowania oraz personalizację, w tym logo, nazwę jachtu i numery rejestracyjne.",
+      "Wykonujemy nowoczesne, trwałe i estetyczne podłogi jachtowe z pianki EVA. Kompleksowa realizacja obejmuje materiał, projekt, wykonanie na wymiar oraz profesjonalny montaż.",
   },
   {
-    title: "Pomiary i szablony",
-    slug: "pomiary-szablony",
+    title: "Skanowanie pokładu",
+    slug: "skanowanie-pokladu",
     image: "/images/about2.avif",
-    alt: "Przygotowanie pomiarów pokładu pod podłogę EVA",
+    alt: "Skanowanie i pomiary pokładu pod podłogę EVA",
     description:
-      "Wykonujemy pomiary ręczne, szablony oraz pomiary na jednostce klienta. Precyzyjny start pozwala uniknąć poprawek na etapie montażu.",
+      "Dokładnie skanujemy i mierzymy pokład, aby przygotować projekt dopasowany do konkretnej jednostki. Szczegółowa wycena wymaga pomiaru na jachcie albo szablonów przesłanych według instrukcji.",
   },
   {
-    title: "Projektowanie CAD/CAM",
+    title: "Indywidualny projekt",
     slug: "projektowanie-cad-cam",
     image: "/images/about3.avif",
     alt: "Projekt CAD podłogi EVA przygotowany do produkcji",
     description:
-      "Na podstawie pomiarów lub plików klienta tworzymy projekt dopasowany do kształtu pokładu, wybranego wzoru, koloru i personalizacji.",
+      "Na podstawie skanu, pomiarów lub szablonów tworzymy projekt dopasowany do kształtu pokładu, wybranego wzoru, koloru i personalizacji.",
   },
   {
     title: "Frezowanie CNC",
@@ -74,15 +74,15 @@ export const services = [
     image: "/images/cnc1.avif",
     alt: "Frezowanie CNC elementów podłogi EVA",
     description:
-      "Wycinamy i frezujemy elementy na obrabiarkach numerycznych, zapewniając powtarzalność, równe krawędzie i dokładne odwzorowanie projektu.",
+      "Wycinamy i frezujemy elementy na obrabiarkach numerycznych, zapewniając powtarzalność, równe krawędzie i dokładne odwzorowanie indywidualnego projektu.",
   },
   {
-    title: "Montaż podłogi",
+    title: "Profesjonalny montaż",
     slug: "montaz-podlogi",
     image: "/images/floor2.avif",
     alt: "Montaż podłogi EVA na jachcie",
     description:
-      "Przygotowujemy powierzchnię, dopasowujemy elementy i wykonujemy profesjonalne klejenie paneli EVA na pokładzie jachtu.",
+      "Przygotowujemy powierzchnię, dopasowujemy elementy i wykonujemy profesjonalne wklejenie pianki EVA na pokładzie jachtu.",
   },
   {
     title: "Zimowanie jachtów",
@@ -90,7 +90,7 @@ export const services = [
     image: "/images/zimowanie1.avif",
     alt: "Jacht przygotowany do zimowania na Mazurach",
     description:
-      "Zapewniamy zimowanie jednostek na monitorowanym placu, wraz z transportem, załadunkiem, slipowaniem i ponownym wodowaniem po sezonie.",
+      "Zapewniamy zimowanie jednostek na monitorowanym placu, wraz z transportem, załadunkiem, slipowaniem i ponownym wodowaniem po sezonie. Orientacyjna cena usługi to około 1000 zł.",
   },
 ];
 
@@ -101,25 +101,25 @@ export const processSteps = [
       "Poznajemy jednostkę, oczekiwania użytkownika, styl pokładu oraz zakres prac.",
   },
   {
-    title: "Pomiar i projekt",
+    title: "Skanowanie i projekt",
     description:
-      "Przygotowujemy szablony lub dokumentację CAD/CAM, a następnie wycenę bez ukrytych kosztów.",
+      "Skanujemy pokład lub pracujemy na szablonach klienta, a następnie przygotowujemy indywidualny projekt.",
   },
   {
-    title: "Produkcja CNC",
+    title: "Wykonanie na wymiar",
     description:
-      "Frezujemy elementy EVA zgodnie z zatwierdzonym projektem i wybraną konfiguracją.",
+      "Frezujemy elementy EVA zgodnie z zatwierdzonym projektem, wzorem i konfiguracją materiału.",
   },
   {
     title: "Montaż i odbiór",
     description:
-      "Instalujemy gotową podłogę na jachcie albo przygotowujemy zestaw do samodzielnego montażu.",
+      "Wklejamy gotową podłogę na pokładzie i dbamy o prawidłowe przygotowanie powierzchni.",
   },
 ];
 
 export const differentiators = [
   "Ponad 10 lat pracy z jachtami i codzienna znajomość potrzeb żeglarzy.",
-  "Połączenie technologii CAD/CAM i CNC z praktycznym doświadczeniem na wodzie.",
+  "Połączenie skanowania, technologii CAD/CAM i CNC z praktycznym doświadczeniem na wodzie.",
   "Lokalna obsługa Mazur oraz możliwość realizacji projektów dla klientów z całej Polski.",
 ];
 
@@ -143,32 +143,50 @@ export const testimonials = [
 
 export const pricing = [
   {
-    title: "Wstępna wycena",
-    price: "indywidualnie",
+    title: "Kompleksowa realizacja",
+    price: "1100 zł/m²",
     description:
-      "Przygotowanie orientacyjnej wyceny na podstawie danych, zdjęć i wymiarów dostarczonych przez klienta.",
-    highlighted: false,
-  },
-  {
-    title: "Szablony pod podłogę EVA",
-    price: "1500 zł",
-    description:
-      "Pobranie pomiarów na jachcie klienta i przygotowanie precyzyjnych szablonów do produkcji. Cena nie zawiera dojazdu powyżej 10 km od Giżycka.",
+      "Cena obejmuje materiał, przygotowanie indywidualnego projektu, wykonanie podłogi EVA na wymiar oraz profesjonalny montaż i wklejenie.",
     highlighted: true,
   },
   {
-    title: "Produkcja podłogi EVA",
-    price: "700 zł/m²",
+    title: "Realizacja na miejscu",
+    price: "3 zł/km",
     description:
-      "Produkcja indywidualnej podłogi jachtowej z pianki EVA według zatwierdzonego projektu.",
+      "Przy usłudze u klienta doliczamy dojazd liczony w obie strony. Należy przyjąć zwykle trzy wizyty: pomiar, digitalizację i korektę oraz wklejenie pianki.",
+    highlighted: false,
+  },
+  {
+    title: "Szablony klienta",
+    price: "wg ustaleń",
+    description:
+      "Możemy przygotować projekt na podstawie przesłanych szablonów, jednak trwałość wklejenia zależy od prawidłowego przygotowania i montażu na pokładzie.",
     highlighted: false,
   },
   {
     title: "Zimowanie jachtów",
-    price: "1000 zł",
+    price: "ok. 1000 zł",
     description:
-      "Zimowanie jachtu na monitorowanym placu wraz z przywozem, rozładunkiem i ponownym zwodowaniem po zimie.",
+      "Zimowanie jednostki na monitorowanym placu wraz z transportem, załadunkiem, slipowaniem i ponownym wodowaniem po sezonie.",
     highlighted: false,
+  },
+];
+
+export const faq = [
+  {
+    question: "Czy możecie zrobić wycenę na podstawie zdjęcia jachtu?",
+    answer:
+      "Zdjęcie pomaga w rozmowie, ale szczegółową wycenę przygotowujemy tylko na podstawie dokładnych pomiarów na jachcie albo szablonów przesłanych według naszej instrukcji.",
+  },
+  {
+    question: "Czy muszę przyprowadzić jacht do EVA Marine?",
+    answer:
+      "Najlepiej tak, ponieważ możemy wtedy wykonać pomiar, sprawdzić projekt i profesjonalnie wkleić piankę. Możliwa jest też praca na szablonach klienta, ale samo wklejenie wymaga specjalistycznego przygotowania.",
+  },
+  {
+    question: "Czy wykonujecie usługę u klienta na miejscu?",
+    answer:
+      "Tak. Przy realizacji poza naszą lokalizacją doliczamy dojazd 3 zł/km liczony w obie strony. Zwykle trzeba przyjąć trzy przyjazdy: pomiar, digitalizację ze sprawdzeniem szablonów oraz wklejenie pianki.",
   },
 ];
 
