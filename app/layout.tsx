@@ -7,9 +7,12 @@ import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import { JsonLd } from "./components/JsonLd";
 import { Navigation } from "./components/Navigation";
 import { company, services, siteUrl } from "./data/site";
+import { socialImage } from "./lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "EVA Marine",
+  category: "marine services",
   title: {
     default: "EVA Marine | Podłogi EVA i pokłady jachtowe Mazury",
     template: "%s | EVA Marine",
@@ -19,6 +22,27 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  keywords: [
+    "podłogi EVA Mazury",
+    "podłogi EVA Giżycko",
+    "pokłady jachtowe EVA",
+    "pianka EVA do jachtu",
+    "skanowanie pokładu jachtu",
+    "frezowanie CNC pianki EVA",
+    "montaż podłogi EVA",
+    "zimowanie jachtów Giżycko",
+  ],
   openGraph: {
     title: "EVA Marine | Podłogi EVA i pokłady jachtowe Mazury",
     description:
@@ -29,10 +53,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/hero.avif",
-        width: 1200,
-        height: 630,
-        alt: "Personalizowana podłoga EVA na jachcie od EVA Marine",
+        url: socialImage.path,
+        width: socialImage.width,
+        height: socialImage.height,
+        alt: socialImage.alt,
       },
     ],
   },
@@ -41,18 +65,22 @@ export const metadata: Metadata = {
     title: "EVA Marine | Podłogi EVA i pokłady jachtowe Mazury",
     description:
       "Personalizowane pokłady jachtowe EVA, skanowanie, CNC i profesjonalny montaż na Mazurach.",
-    images: ["/images/hero.avif"],
+    images: [socialImage.path],
   },
 };
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
+  "@id": `${siteUrl}#localbusiness`,
   name: company.name,
+  legalName: company.legalName,
   url: siteUrl,
   image: `${siteUrl}/images/hero.avif`,
+  logo: `${siteUrl}/icon`,
   email: company.email,
   telephone: company.phone,
+  priceRange: "od 1100 zł/m²",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Spytkowo 2F",
@@ -61,9 +89,24 @@ const localBusinessJsonLd = {
     addressRegion: company.region,
     addressCountry: "PL",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 54.06844442379344,
+    longitude: 21.812461652525865,
+  },
+  hasMap: "https://www.google.com/maps?q=54.06844442379344,21.812461652525865",
   areaServed: ["Mazury", "Giżycko", "Warmińsko-Mazurskie", "Polska"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: company.phone,
+    email: company.email,
+    areaServed: "PL",
+    availableLanguage: ["pl"],
+  },
   makesOffer: services.map((service) => ({
     "@type": "Offer",
+    url: `${siteUrl}/services/${service.slug}`,
     itemOffered: {
       "@type": "Service",
       name: service.title,
@@ -75,9 +118,14 @@ const localBusinessJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}#website`,
   name: "EVA Marine",
+  alternateName: "EVA Marine Giżycko",
   url: siteUrl,
   inLanguage: "pl-PL",
+  publisher: {
+    "@id": `${siteUrl}#localbusiness`,
+  },
 };
 
 export default function RootLayout({

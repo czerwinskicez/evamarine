@@ -1,29 +1,26 @@
 import { CtaBand } from "../components/CtaBand";
 import { JsonLd } from "../components/JsonLd";
 import { PortfolioGallery } from "../components/PortfolioGallery";
-import { portfolioImages, siteUrl } from "../data/site";
-import { pageMetadata } from "../lib/seo";
+import { portfolioImages, staticRoutes } from "../data/site";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "../lib/seo";
 
+const route = staticRoutes.find((item) => item.path === "/portfolio")!;
 export const metadata = pageMetadata({
-  title: "Portfolio - realizacje podłóg EVA",
+  title: route.title,
   path: "/portfolio",
-  description:
-    "Portfolio EVA Marine: realizacje personalizowanych podłóg EVA, frezowanych pokładów jachtowych i detali wykonanych dla jachtów oraz łodzi.",
+  description: route.description,
 });
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Start", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "Portfolio", item: `${siteUrl}/portfolio` },
-  ],
-};
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Start", path: "/" },
+  { name: "Portfolio", path: "/portfolio" },
+]);
 
 export default function PortfolioPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={webPageJsonLd({ path: route.path, name: route.title, description: route.description })} />
       <section className="section bg-sand/35">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow">Portfolio</p>

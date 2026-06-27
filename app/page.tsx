@@ -3,14 +3,14 @@ import Link from "next/link";
 import { CtaBand } from "./components/CtaBand";
 import { JsonLd } from "./components/JsonLd";
 import { SectionHeader } from "./components/SectionHeader";
-import { company, portfolioImages, processSteps, services, testimonials, values } from "./data/site";
-import { pageMetadata } from "./lib/seo";
+import { company, portfolioImages, processSteps, services, staticRoutes, testimonials, values } from "./data/site";
+import { pageMetadata, webPageJsonLd } from "./lib/seo";
 
+const route = staticRoutes.find((item) => item.path === "/")!;
 export const metadata = pageMetadata({
-  title: "Podłogi EVA i pokłady jachtowe Mazury",
+  title: route.title,
   path: "/",
-  description:
-    "EVA Marine z Giżycka wykonuje profesjonalne podłogi jachtowe z pianki EVA: skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż.",
+  description: route.description,
 });
 
 const serviceJsonLd = {
@@ -34,6 +34,7 @@ const serviceJsonLd = {
 export default function Home() {
   return (
     <>
+      <JsonLd data={webPageJsonLd({ path: route.path, name: route.title, description: route.description })} />
       <JsonLd data={serviceJsonLd} />
       <section className="relative isolate min-h-[calc(100vh-74px)] overflow-hidden bg-navy text-white">
         <Image
@@ -77,7 +78,7 @@ export default function Home() {
           />
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {services.slice(0, 4).map((service) => (
-              <Link key={service.slug} href="/services" className="group card overflow-hidden">
+              <Link key={service.slug} href={`/services/${service.slug}`} className="group card overflow-hidden">
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={service.image}

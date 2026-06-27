@@ -3,15 +3,20 @@ import Link from "next/link";
 import { CtaBand } from "../components/CtaBand";
 import { JsonLd } from "../components/JsonLd";
 import { SectionHeader } from "../components/SectionHeader";
-import { company, services, siteUrl } from "../data/site";
-import { pageMetadata } from "../lib/seo";
+import { company, services, siteUrl, staticRoutes } from "../data/site";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "../lib/seo";
 
+const route = staticRoutes.find((item) => item.path === "/services")!;
 export const metadata = pageMetadata({
-  title: "Usługi - podłogi EVA, skanowanie i montaż",
+  title: route.title,
   path: "/services",
-  description:
-    "Usługi EVA Marine: skanowanie pokładu, indywidualny projekt, wykonanie podłogi EVA na wymiar oraz profesjonalny montaż i wklejenie w Giżycku.",
+  description: route.description,
 });
+
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Start", path: "/" },
+  { name: "Usługi", path: "/services" },
+]);
 
 const servicesJsonLd = {
   "@context": "https://schema.org",
@@ -23,6 +28,7 @@ const servicesJsonLd = {
       "@type": "Service",
       name: service.title,
       description: service.description,
+      url: `${siteUrl}/services/${service.slug}`,
       areaServed: "Mazury, Giżycko, Polska",
       provider: {
         "@type": "ProfessionalService",
@@ -36,6 +42,8 @@ const servicesJsonLd = {
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={webPageJsonLd({ path: route.path, name: route.title, description: route.description })} />
       <JsonLd data={servicesJsonLd} />
       <section className="section bg-sand/35">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -72,9 +80,14 @@ export default function ServicesPage() {
                   <p className="eyebrow">0{index + 1}</p>
                   <h2 className="mt-3 text-3xl font-semibold text-navy">{service.title}</h2>
                   <p className="mt-4 text-base leading-8 text-slate">{service.description}</p>
-                  <Link href="/contact" className="btn btn-outline mt-7 w-fit">
-                    Zapytaj o usługę
-                  </Link>
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                    <Link href={`/services/${service.slug}`} className="btn btn-outline w-fit">
+                      Szczegóły usługi
+                    </Link>
+                    <Link href="/contact" className="btn btn-primary w-fit">
+                      Zapytaj o usługę
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}

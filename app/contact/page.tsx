@@ -1,28 +1,25 @@
 import { ContactForm } from "../components/ContactForm";
 import { JsonLd } from "../components/JsonLd";
-import { company, siteUrl } from "../data/site";
-import { pageMetadata } from "../lib/seo";
+import { company, staticRoutes } from "../data/site";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "../lib/seo";
 
+const route = staticRoutes.find((item) => item.path === "/contact")!;
 export const metadata = pageMetadata({
-  title: "Kontakt - darmowa wycena podłogi EVA",
+  title: route.title,
   path: "/contact",
-  description:
-    "Skontaktuj się z EVA Marine w Giżycku. Wycena podłogi EVA, skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż.",
+  description: route.description,
 });
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Start", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "Kontakt", item: `${siteUrl}/contact` },
-  ],
-};
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Start", path: "/" },
+  { name: "Kontakt", path: "/contact" },
+]);
 
 export default function ContactPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={webPageJsonLd({ path: route.path, name: route.title, description: route.description })} />
       <section className="section bg-sand/35">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow">Kontakt</p>

@@ -3,12 +3,12 @@ export const siteUrl = "https://evamarine.pl";
 export const company = {
   name: "EVA Marine",
   legalName: "EVA Marine",
-  email: "evamarine@info.pl",
+  email: "kontakt@evamarine.pl",
   phone: "+48 452 007 077",
   address: "Spytkowo 2F, 11-500 Giżycko",
   region: "Warmińsko-Mazurskie",
   country: "Polska",
-  contactRecipient: "root.woozie@gmail.com",
+  contactRecipients: ["kontakt@evamarine.pl", "root.woozie@gmail.com"],
 };
 
 export const navigation = [
@@ -19,6 +19,63 @@ export const navigation = [
   { href: "/pricing", label: "Cennik" },
   { href: "/contact", label: "Kontakt" },
 ];
+
+export const staticRoutes = [
+  {
+    path: "/",
+    label: "Start",
+    title: "Podłogi EVA i pokłady jachtowe Mazury",
+    description:
+      "EVA Marine z Giżycka wykonuje profesjonalne podłogi jachtowe z pianki EVA: skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż.",
+    priority: 1,
+    changeFrequency: "weekly",
+  },
+  {
+    path: "/about",
+    label: "O nas",
+    title: "O nas - doświadczenie jachtowe na Mazurach",
+    description:
+      "Poznaj EVA Marine z Giżycka. Ponad 10 lat pracy z jachtami, skanowanie pokładów, projektowanie podłóg EVA, CNC i praktyczne podejście do montażu.",
+    priority: 0.8,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/services",
+    label: "Usługi",
+    title: "Usługi - podłogi EVA, skanowanie i montaż",
+    description:
+      "Usługi EVA Marine: skanowanie pokładu, indywidualny projekt, wykonanie podłogi EVA na wymiar oraz profesjonalny montaż i wklejenie w Giżycku.",
+    priority: 0.95,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/portfolio",
+    label: "Portfolio",
+    title: "Portfolio - realizacje podłóg EVA",
+    description:
+      "Portfolio EVA Marine: realizacje personalizowanych podłóg EVA, frezowanych pokładów jachtowych i detali wykonanych dla jachtów oraz łodzi.",
+    priority: 0.85,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/pricing",
+    label: "Cennik",
+    title: "Cennik - podłogi EVA 1100 zł/m²",
+    description:
+      "Cennik EVA Marine: kompleksowa realizacja podłogi EVA 1100 zł/m². Cena obejmuje materiał, projekt, wykonanie na wymiar oraz montaż.",
+    priority: 0.85,
+    changeFrequency: "monthly",
+  },
+  {
+    path: "/contact",
+    label: "Kontakt",
+    title: "Kontakt - darmowa wycena podłogi EVA",
+    description:
+      "Skontaktuj się z EVA Marine w Giżycku. Wycena podłogi EVA, skanowanie pokładu, indywidualny projekt, wykonanie na wymiar i montaż.",
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+] as const;
 
 export const values = [
   {

@@ -1,24 +1,20 @@
 import Link from "next/link";
 import { CtaBand } from "../components/CtaBand";
 import { JsonLd } from "../components/JsonLd";
-import { faq, pricing, siteUrl } from "../data/site";
-import { pageMetadata } from "../lib/seo";
+import { faq, pricing, staticRoutes } from "../data/site";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "../lib/seo";
 
+const route = staticRoutes.find((item) => item.path === "/pricing")!;
 export const metadata = pageMetadata({
-  title: "Cennik - podłogi EVA 1100 zł/m²",
+  title: route.title,
   path: "/pricing",
-  description:
-    "Cennik EVA Marine: kompleksowa realizacja podłogi EVA 1100 zł/m². Cena obejmuje materiał, projekt, wykonanie na wymiar oraz montaż.",
+  description: route.description,
 });
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Start", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "Cennik", item: `${siteUrl}/pricing` },
-  ],
-};
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Start", path: "/" },
+  { name: "Cennik", path: "/pricing" },
+]);
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -36,7 +32,8 @@ const faqJsonLd = {
 export default function PricingPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={webPageJsonLd({ path: route.path, name: route.title, description: route.description })} />
       <JsonLd data={faqJsonLd} />
       <section className="section bg-sand/35">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">

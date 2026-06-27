@@ -11,7 +11,7 @@
 - Dodaj w Vercel zmienne środowiskowe:
   - `RESEND_API_KEY`
   - `RESEND_FROM`, np. `EVA Marine <kontakt@evamarine.pl>`
-  - opcjonalnie `CONTACT_TO`, jeśli odbiorca ma być inny niż `root.woozie@gmail.com`
+  - opcjonalnie `CONTACT_TO`, jeśli odbiorcy mają być inni niż `kontakt@evamarine.pl` i `root.woozie@gmail.com`; wiele adresów rozdziel przecinkami
 - Po deployu wyślij testową wiadomość z formularza i potwierdź odbiór.
 
 ## Treści i dane firmy

@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
-  const to = process.env.CONTACT_TO || company.contactRecipient;
+  const to = getRecipients();
 
   if (!apiKey || !from) {
     return Response.json(
@@ -100,4 +100,12 @@ export async function POST(request: Request) {
 function clean(value: unknown, limit = 200) {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, limit);
+}
+
+function getRecipients() {
+  const configuredRecipients = process.env.CONTACT_TO?.split(",")
+    .map((recipient) => recipient.trim())
+    .filter(Boolean);
+
+  return configuredRecipients?.length ? configuredRecipients : company.contactRecipients;
 }

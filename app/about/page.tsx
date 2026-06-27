@@ -2,29 +2,26 @@ import Image from "next/image";
 import { CtaBand } from "../components/CtaBand";
 import { JsonLd } from "../components/JsonLd";
 import { SectionHeader } from "../components/SectionHeader";
-import { differentiators, processSteps, siteUrl } from "../data/site";
-import { pageMetadata } from "../lib/seo";
+import { differentiators, processSteps, staticRoutes } from "../data/site";
+import { breadcrumbJsonLd, pageMetadata, webPageJsonLd } from "../lib/seo";
 
+const route = staticRoutes.find((item) => item.path === "/about")!;
 export const metadata = pageMetadata({
-  title: "O nas - doświadczenie jachtowe na Mazurach",
+  title: route.title,
   path: "/about",
-  description:
-    "Poznaj EVA Marine z Giżycka. Ponad 10 lat pracy z jachtami, skanowanie pokładów, projektowanie podłóg EVA, CNC i praktyczne podejście do montażu.",
+  description: route.description,
 });
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Start", item: siteUrl },
-    { "@type": "ListItem", position: 2, name: "O nas", item: `${siteUrl}/about` },
-  ],
-};
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Start", path: "/" },
+  { name: "O nas", path: "/about" },
+]);
 
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={webPageJsonLd({ path: route.path, name: route.title, description: route.description })} />
       <section className="section bg-sand/35">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-8">
           <div>
