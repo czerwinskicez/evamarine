@@ -143,13 +143,27 @@ export default function RootLayout({
             __html: `
               (function () {
                 var analyticsStorage = 'denied';
+                var adStorage = 'denied';
+                var adUserData = 'denied';
+                var adPersonalization = 'denied';
 
                 try {
-                  var storedConsent = window.localStorage.getItem('evaMarineConsent.v1');
+                  var storedConsent = window.localStorage.getItem('evaMarineConsent.v2');
                   if (storedConsent) {
                     var parsedConsent = JSON.parse(storedConsent);
-                    if (parsedConsent && parsedConsent.version === 1 && typeof parsedConsent.analytics === 'boolean') {
-                      analyticsStorage = parsedConsent.analytics ? 'granted' : 'denied';
+                    if (parsedConsent && parsedConsent.version === 2) {
+                      analyticsStorage = parsedConsent.analyticsStorage ? 'granted' : 'denied';
+                      adStorage = parsedConsent.adStorage ? 'granted' : 'denied';
+                      adUserData = parsedConsent.adUserData ? 'granted' : 'denied';
+                      adPersonalization = parsedConsent.adPersonalization ? 'granted' : 'denied';
+                    }
+                  } else {
+                    var legacyConsent = window.localStorage.getItem('evaMarineConsent.v1');
+                    if (legacyConsent) {
+                      var parsedLegacyConsent = JSON.parse(legacyConsent);
+                      if (parsedLegacyConsent && parsedLegacyConsent.version === 1 && typeof parsedLegacyConsent.analytics === 'boolean') {
+                        analyticsStorage = parsedLegacyConsent.analytics ? 'granted' : 'denied';
+                      }
                     }
                   }
                 } catch (error) {}
@@ -157,9 +171,9 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
                 window.gtag('consent', 'default', {
-                  ad_storage: 'denied',
-                  ad_user_data: 'denied',
-                  ad_personalization: 'denied',
+                  ad_storage: adStorage,
+                  ad_user_data: adUserData,
+                  ad_personalization: adPersonalization,
                   analytics_storage: analyticsStorage,
                   wait_for_update: 500
                 });

@@ -2,13 +2,34 @@
 
 import { useEffect, useState } from "react";
 
-const storageKey = "evaMarineConsent.v1";
+const storageKey = "evaMarineConsent.v2";
+const legacyStorageKey = "evaMarineConsent.v1";
 const openPreferencesEvent = "evaMarine:openCookiePreferences";
 
-type StoredConsent = {
-  version: 1;
-  analytics: boolean;
+type ConsentPreferences = {
+  analyticsStorage: boolean;
+  adStorage: boolean;
+  adUserData: boolean;
+  adPersonalization: boolean;
+};
+
+type StoredConsent = ConsentPreferences & {
+  version: 2;
   updatedAt: string;
+};
+
+const deniedConsent: ConsentPreferences = {
+  analyticsStorage: false,
+  adStorage: false,
+  adUserData: false,
+  adPersonalization: false,
+};
+
+const grantedConsent: ConsentPreferences = {
+  analyticsStorage: true,
+  adStorage: true,
+  adUserData: true,
+  adPersonalization: true,
 };
 
 declare global {
@@ -21,21 +42,20 @@ declare global {
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [analytics, setAnalytics] = useState(false);
+  const [preferences, setPreferences] = useState<ConsentPreferences>(deniedConsent);
 
   useEffect(() => {
     const savedConsent = readStoredConsent();
 
     if (savedConsent) {
-      setAnalytics(savedConsent.analytics);
-      updateGoogleConsent(savedConsent.analytics);
+      setPreferences(savedConsent);
+      updateGoogleConsent(savedConsent);
     } else {
       setIsVisible(true);
     }
 
     function openPreferences() {
-      const currentConsent = readStoredConsent();
-      setAnalytics(currentConsent?.analytics ?? false);
+      setPreferences(readStoredConsent() ?? deniedConsent);
       setShowDetails(true);
       setIsVisible(true);
     }
@@ -44,24 +64,30 @@ export function CookieConsent() {
     return () => window.removeEventListener(openPreferencesEvent, openPreferences);
   }, []);
 
-  function saveConsent(allowAnalytics: boolean) {
+  function saveConsent(nextPreferences: ConsentPreferences) {
     const consent: StoredConsent = {
-      version: 1,
-      analytics: allowAnalytics,
+      version: 2,
+      ...nextPreferences,
       updatedAt: new Date().toISOString(),
     };
 
     try {
       localStorage.setItem(storageKey, JSON.stringify(consent));
+      localStorage.removeItem(legacyStorageKey);
     } catch {}
-    setAnalytics(allowAnalytics);
+
+    setPreferences(nextPreferences);
     setShowDetails(false);
     setIsVisible(false);
-    updateGoogleConsent(allowAnalytics);
+    updateGoogleConsent(nextPreferences);
 
-    if (!allowAnalytics) {
-      deleteAnalyticsCookies();
+    if (!nextPreferences.analyticsStorage || !nextPreferences.adStorage) {
+      deleteGoogleCookies();
     }
+  }
+
+  function updatePreference(name: keyof ConsentPreferences, value: boolean) {
+    setPreferences((current) => ({ ...current, [name]: value }));
   }
 
   if (!isVisible) return null;
@@ -76,18 +102,18 @@ export function CookieConsent() {
         <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-start">
           <div>
             <p className="eyebrow">Prywatność</p>
-            <h2 className="mt-2 text-xl font-semibold text-navy">Cookies i analityka</h2>
+            <h2 className="mt-2 text-xl font-semibold text-navy">Cookies i zgody Google</h2>
             <p className="mt-2 text-sm leading-6 text-slate">
-              Używamy niezbędnych mechanizmów strony oraz opcjonalnej analityki, która pomaga
-              mierzyć odwiedziny. Analityka działa dopiero po Twojej zgodzie.
+              Korzystamy z niezbędnych mechanizmów strony oraz opcjonalnych danych telemetrycznych,
+              które pomagają nam rozumieć, co warto poprawić. Możesz wybrać, na co się zgadzasz.
             </p>
           </div>
 
           <div className="flex flex-col gap-2 sm:flex-row md:flex-col">
-            <button type="button" className="btn btn-primary" onClick={() => saveConsent(true)}>
+            <button type="button" className="btn btn-primary" onClick={() => saveConsent(grantedConsent)}>
               Akceptuję wszystkie
             </button>
-            <button type="button" className="btn btn-outline bg-white" onClick={() => saveConsent(false)}>
+            <button type="button" className="btn btn-outline bg-white" onClick={() => saveConsent(deniedConsent)}>
               Tylko niezbędne
             </button>
             <button
@@ -113,27 +139,36 @@ export function CookieConsent() {
               <input type="checkbox" checked disabled className="mt-1 h-5 w-5 accent-ocean" />
             </label>
 
-            <label className="flex items-start justify-between gap-4 rounded-sm bg-white p-4">
-              <span>
-                <span className="block font-semibold text-navy">Analityczne</span>
-                <span className="mt-1 block text-sm leading-6 text-slate">
-                  Pomagają mierzyć ruch na stronie. Dla Google Consent Mode ustawiamy tylko
-                  `analytics_storage`; zgody reklamowe pozostają wyłączone.
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                checked={analytics}
-                onChange={(event) => setAnalytics(event.target.checked)}
-                className="mt-1 h-5 w-5 accent-ocean"
-              />
-            </label>
+            <ConsentToggle
+              title="Analityka"
+              description="Pomaga nam sprawdzać, które treści są przydatne, ile osób odwiedza stronę i gdzie warto ją usprawnić."
+              checked={preferences.analyticsStorage}
+              onChange={(value) => updatePreference("analyticsStorage", value)}
+            />
+            <ConsentToggle
+              title="Pomiar kampanii"
+              description="Pozwala ocenić, czy działania promocyjne skutecznie prowadzą do kontaktu z EVA Marine."
+              checked={preferences.adStorage}
+              onChange={(value) => updatePreference("adStorage", value)}
+            />
+            <ConsentToggle
+              title="Lepsze dopasowanie komunikacji"
+              description="Pomaga lepiej rozumieć zainteresowanie ofertą i dopasowywać komunikaty do osób szukających usług jachtowych."
+              checked={preferences.adUserData}
+              onChange={(value) => updatePreference("adUserData", value)}
+            />
+            <ConsentToggle
+              title="Spersonalizowane treści promocyjne"
+              description="Pozwala pokazywać bardziej trafne informacje o usługach, zamiast ogólnych komunikatów reklamowych."
+              checked={preferences.adPersonalization}
+              onChange={(value) => updatePreference("adPersonalization", value)}
+            />
 
             <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
-              <button type="button" className="btn btn-outline bg-white" onClick={() => saveConsent(false)}>
+              <button type="button" className="btn btn-outline bg-white" onClick={() => saveConsent(deniedConsent)}>
                 Odrzuć opcjonalne
               </button>
-              <button type="button" className="btn btn-primary" onClick={() => saveConsent(analytics)}>
+              <button type="button" className="btn btn-primary" onClick={() => saveConsent(preferences)}>
                 Zapisz wybór
               </button>
             </div>
@@ -156,23 +191,74 @@ export function CookieSettingsLink() {
   );
 }
 
-function readStoredConsent() {
+function ConsentToggle({
+  title,
+  description,
+  checked,
+  onChange,
+}: {
+  title: string;
+  description: string;
+  checked: boolean;
+  onChange: (value: boolean) => void;
+}) {
+  return (
+    <label className="flex items-start justify-between gap-4 rounded-sm bg-white p-4">
+      <span>
+        <span className="block font-semibold text-navy">{title}</span>
+        <span className="mt-1 block text-sm leading-6 text-slate">{description}</span>
+      </span>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(event) => onChange(event.target.checked)}
+        className="mt-1 h-5 w-5 accent-ocean"
+      />
+    </label>
+  );
+}
+
+function readStoredConsent(): ConsentPreferences | null {
   try {
     const rawConsent = localStorage.getItem(storageKey);
-    if (!rawConsent) return null;
 
-    const parsed = JSON.parse(rawConsent) as Partial<StoredConsent>;
-    if (parsed.version !== 1 || typeof parsed.analytics !== "boolean") {
+    if (rawConsent) {
+      const parsed = JSON.parse(rawConsent) as Partial<StoredConsent>;
+
+      if (
+        parsed.version === 2 &&
+        typeof parsed.analyticsStorage === "boolean" &&
+        typeof parsed.adStorage === "boolean" &&
+        typeof parsed.adUserData === "boolean" &&
+        typeof parsed.adPersonalization === "boolean"
+      ) {
+        return {
+          analyticsStorage: parsed.analyticsStorage,
+          adStorage: parsed.adStorage,
+          adUserData: parsed.adUserData,
+          adPersonalization: parsed.adPersonalization,
+        };
+      }
+    }
+
+    const legacyConsent = localStorage.getItem(legacyStorageKey);
+    if (!legacyConsent) return null;
+
+    const parsedLegacy = JSON.parse(legacyConsent) as { version?: number; analytics?: boolean };
+    if (parsedLegacy.version !== 1 || typeof parsedLegacy.analytics !== "boolean") {
       return null;
     }
 
-    return parsed as StoredConsent;
+    return {
+      ...deniedConsent,
+      analyticsStorage: parsedLegacy.analytics,
+    };
   } catch {
     return null;
   }
 }
 
-function updateGoogleConsent(allowAnalytics: boolean) {
+function updateGoogleConsent(preferences: ConsentPreferences) {
   window.dataLayer = window.dataLayer || [];
   window.gtag =
     window.gtag ||
@@ -181,20 +267,26 @@ function updateGoogleConsent(allowAnalytics: boolean) {
     };
 
   window.gtag("consent", "update", {
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-    analytics_storage: allowAnalytics ? "granted" : "denied",
+    analytics_storage: preferences.analyticsStorage ? "granted" : "denied",
+    ad_storage: preferences.adStorage ? "granted" : "denied",
+    ad_user_data: preferences.adUserData ? "granted" : "denied",
+    ad_personalization: preferences.adPersonalization ? "granted" : "denied",
   });
 
   window.dispatchEvent(
     new CustomEvent("evaMarine:consentUpdated", {
-      detail: { analytics: allowAnalytics },
+      detail: {
+        analytics: preferences.analyticsStorage,
+        analyticsStorage: preferences.analyticsStorage,
+        adStorage: preferences.adStorage,
+        adUserData: preferences.adUserData,
+        adPersonalization: preferences.adPersonalization,
+      },
     }),
   );
 }
 
-function deleteAnalyticsCookies() {
+function deleteGoogleCookies() {
   const cookieNames = document.cookie
     .split(";")
     .map((cookie) => cookie.trim().split("=")[0])

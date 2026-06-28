@@ -3,17 +3,19 @@
 import Script from "next/script";
 import { useEffect } from "react";
 
-const storageKey = "evaMarineConsent.v1";
+const storageKey = "evaMarineConsent.v2";
+const legacyStorageKey = "evaMarineConsent.v1";
 const defaultMeasurementId = "G-S8EFCXMQ3J";
 const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || defaultMeasurementId;
 
-type ConsentUpdatedEvent = CustomEvent<{ analytics: boolean }>;
+type ConsentUpdatedEvent = CustomEvent<{ analytics?: boolean; analyticsStorage?: boolean }>;
 
 export function GoogleAnalytics() {
   useEffect(() => {
     function onConsentUpdated(event: Event) {
       const consentEvent = event as ConsentUpdatedEvent;
-      if (!consentEvent.detail.analytics) return;
+      const hasAnalyticsConsent = consentEvent.detail.analyticsStorage ?? consentEvent.detail.analytics;
+      if (!hasAnalyticsConsent) return;
 
       window.gtag?.("config", measurementId, {
         anonymize_ip: true,
@@ -45,9 +47,21 @@ export function GoogleAnalytics() {
               var parsedConsent = JSON.parse(storedConsent);
               hasAnalyticsConsent = Boolean(
                 parsedConsent &&
-                parsedConsent.version === 1 &&
-                parsedConsent.analytics === true
+                parsedConsent.version === 2 &&
+                parsedConsent.analyticsStorage === true
               );
+            }
+
+            if (!storedConsent) {
+              var legacyConsent = window.localStorage.getItem('${legacyStorageKey}');
+              if (legacyConsent) {
+                var parsedLegacyConsent = JSON.parse(legacyConsent);
+                hasAnalyticsConsent = Boolean(
+                  parsedLegacyConsent &&
+                  parsedLegacyConsent.version === 1 &&
+                  parsedLegacyConsent.analytics === true
+                );
+              }
             }
           } catch (error) {}
 
