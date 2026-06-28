@@ -77,7 +77,7 @@ const localBusinessJsonLd = {
   legalName: company.legalName,
   url: siteUrl,
   image: `${siteUrl}/images/hero.avif`,
-  logo: `${siteUrl}/icon`,
+  logo: `${siteUrl}/images/logo.avif`,
   email: company.email,
   telephone: company.phone,
   priceRange: "od 1100 zł/m²",

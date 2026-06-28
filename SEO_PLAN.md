@@ -6,7 +6,7 @@ Dokument jest przeznaczony dla człowieka i dla agenta AI pracującego w tym rep
 
 - Wykonano: generowany obraz Open Graph `app/opengraph-image.tsx`.
 - Wykonano: generowany obraz Twitter `app/twitter-image.tsx`.
-- Wykonano: generowane ikony `app/icon.tsx` i `app/apple-icon.tsx`.
+- Wykonano: favicon jest obsługiwany przez Next file convention jako `app/favicon.ico`.
 - Wykonano: wspólne helpery SEO w `app/lib/seo.ts`.
 - Wykonano: spójne metadata i WebPage JSON-LD dla głównych stron.
 - Wykonano: BreadcrumbList JSON-LD ujednolicony helperem.
@@ -27,7 +27,7 @@ Dokument jest przeznaczony dla człowieka i dla agenta AI pracującego w tym rep
 - Istnieje `app/robots.ts`.
 - Istnieje JSON-LD dla LocalBusiness/WebSite w `app/layout.tsx`, ItemList usług na stronie głównej i usługach, BreadcrumbList na części stron oraz FAQPage na cenniku.
 - Open Graph i Twitter metadata używają generowanych obrazów PNG przez `app/opengraph-image.tsx` i `app/twitter-image.tsx`.
-- Strona ma generowane ikony `app/icon.tsx` i `app/apple-icon.tsx` oraz istniejący `app/favicon.ico`.
+- Strona używa `app/favicon.ico` przez Next file convention.
 - Sitelinks w Google nie da się ręcznie wymusić. Google generuje je automatycznie na podstawie struktury, tytułów, nagłówków i linkowania wewnętrznego.
 
 ## Priorytety
@@ -163,11 +163,11 @@ Nie da się ręcznie ustawić sitelinks. Trzeba poprawić sygnały, które Googl
 ### 8. Favicon I Nazwa Strony W Google
 
 - Zweryfikować `app/favicon.ico`.
-- Jeśli favicon jest domyślny, przygotować brandowy favicon EVA Marine:
+- Jeśli favicon okaże się nieczytelny w wynikach Google, przygotować poprawioną wersję brandową EVA Marine:
   - prosty znak,
   - czytelny w 16x16 i 32x32,
   - bez małego tekstu.
-- Rozważyć dodanie `app/icon.png` lub `app/icon.tsx` zgodnie z Next file conventions.
+- Rozważyć dodanie `app/apple-icon.png`, jeśli potrzebna będzie osobna ikona dla urządzeń Apple.
 - Dodać lub zweryfikować WebSite/Organization structured data z nazwą `EVA Marine`.
 - Kryterium akceptacji: wynik Google ma poprawny favicon i nazwę strony po ponownym crawlu.
 

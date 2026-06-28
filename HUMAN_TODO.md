@@ -24,7 +24,7 @@
 - Wyślij sitemapę: `https://evamarine.pl/sitemap.xml`.
 - Sprawdź `https://evamarine.pl/robots.txt`.
 - Zweryfikuj dane strukturalne w Google Rich Results Test.
-- Jeśli ma działać Google Analytics, dodaj w Vercel zmienną `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+- Google Analytics jest podpięty z ID `G-S8EFCXMQ3J`; opcjonalnie możesz nadpisać je zmienną `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
 - Po wdrożeniu sprawdź Google Consent Mode w Tag Assistant i zweryfikuj, że analityka uruchamia się dopiero po zgodzie.
 
 ## Odbiór wizualny

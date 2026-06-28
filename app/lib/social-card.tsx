@@ -1,3 +1,5 @@
+const fontFamily = 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+
 export function SocialCard() {
   return (
     <div
@@ -10,7 +12,7 @@ export function SocialCard() {
         background: "#17384f",
         color: "#fbfaf6",
         padding: "58px 68px",
-        fontFamily: "Arial, sans-serif",
+        fontFamily,
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

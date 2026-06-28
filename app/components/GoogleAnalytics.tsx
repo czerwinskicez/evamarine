@@ -4,7 +4,8 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 
 const storageKey = "evaMarineConsent.v1";
-const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const defaultMeasurementId = "G-S8EFCXMQ3J";
+const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || defaultMeasurementId;
 
 type ConsentUpdatedEvent = CustomEvent<{ analytics: boolean }>;
 
