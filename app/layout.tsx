@@ -160,7 +160,8 @@ export default function RootLayout({
                   ad_storage: 'denied',
                   ad_user_data: 'denied',
                   ad_personalization: 'denied',
-                  analytics_storage: analyticsStorage
+                  analytics_storage: analyticsStorage,
+                  wait_for_update: 500
                 });
               })();
             `,
