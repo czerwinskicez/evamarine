@@ -80,7 +80,7 @@ const localBusinessJsonLd = {
   logo: `${siteUrl}/images/logo.avif`,
   email: company.email,
   telephone: company.phone,
-  priceRange: "od 1100 zł/m²",
+  priceRange: "od 199 zł/m²",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Spytkowo 2F",

@@ -60,9 +60,9 @@ export const staticRoutes = [
   {
     path: "/pricing",
     label: "Cennik",
-    title: "Cennik - podłogi EVA 1100 zł/m²",
+    title: "Cennik - projekt, pokład i montaż EVA",
     description:
-      "Cennik EVA Marine: kompleksowa realizacja podłogi EVA 1100 zł/m². Cena obejmuje materiał, projekt, wykonanie na wymiar oraz montaż.",
+      "Cennik EVA Marine: projekt 499 zł/m², pokład EVA 799 zł/m² oraz montaż 199 zł/m². Sprawdź elementy wyceny podłogi EVA.",
     priority: 0.85,
     changeFrequency: "monthly",
   },
@@ -200,11 +200,25 @@ export const testimonials = [
 
 export const pricing = [
   {
-    title: "Kompleksowa realizacja",
-    price: "1100 zł/m²",
+    title: "Projekt",
+    price: "499 zł/m²",
     description:
-      "Cena obejmuje materiał, przygotowanie indywidualnego projektu, wykonanie podłogi EVA na wymiar oraz profesjonalny montaż i wklejenie.",
+      "Przygotowanie indywidualnego projektu podłogi EVA na podstawie pomiarów, skanu pokładu albo prawidłowo wykonanych szablonów.",
+    highlighted: false,
+  },
+  {
+    title: "Pokład EVA",
+    price: "799 zł/m²",
+    description:
+      "Wykonanie elementów podłogi EVA na wymiar, z wybranym kolorem, wzorem, frezowaniem i dopasowaniem do konkretnej jednostki.",
     highlighted: true,
+  },
+  {
+    title: "Montaż",
+    price: "199 zł/m²",
+    description:
+      "Profesjonalne przygotowanie powierzchni, dopasowanie gotowych elementów i montaż pianki EVA na pokładzie jachtu.",
+    highlighted: false,
   },
   {
     title: "Realizacja na miejscu",

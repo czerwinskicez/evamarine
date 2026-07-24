@@ -42,14 +42,14 @@ export default function PricingPage() {
             Przejrzysta wycena podłogi EVA
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate">
-            Kompleksowa realizacja kosztuje 1100 zł/m² i obejmuje materiał,
-            indywidualny projekt, wykonanie podłogi na wymiar oraz profesjonalny montaż.
+            Koszt realizacji rozbijamy na czytelne elementy: projekt, wykonanie pokładu EVA
+            oraz profesjonalny montaż. Dzięki temu od razu widać, co składa się na finalną wycenę.
           </p>
         </div>
       </section>
 
       <section className="section">
-        <div className="mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
           {pricing.map((item) => (
             <article
               key={item.title}
