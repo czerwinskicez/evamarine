@@ -62,7 +62,7 @@ export const staticRoutes = [
     label: "Cennik",
     title: "Cennik - projekt, pokład i montaż EVA",
     description:
-      "Cennik EVA Marine: projekt 499 zł/m², pokład EVA 799 zł/m² oraz montaż 199 zł/m². Sprawdź elementy wyceny podłogi EVA.",
+      "Cennik EVA Marine: projekt 499 zł, pokład EVA 799 zł/m² oraz montaż 199 zł/m². Sprawdź elementy wyceny podłogi EVA.",
     priority: 0.85,
     changeFrequency: "monthly",
   },
@@ -201,7 +201,7 @@ export const testimonials = [
 export const pricing = [
   {
     title: "Projekt",
-    price: "499 zł/m²",
+    price: "499 zł",
     description:
       "Przygotowanie indywidualnego projektu podłogi EVA na podstawie pomiarów, skanu pokładu albo prawidłowo wykonanych szablonów.",
     highlighted: false,
