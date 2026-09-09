@@ -298,4 +298,56 @@ export const portfolioImages = [
     src: "/images/hero.avif",
     alt: "Precyzyjne wycinanie paneli EVA",
   },
+  {
+    src: "/images/portfolio-07.jpeg",
+    alt: "Realizacja pokładu jachtowego z pianką EVA",
+  },
+  {
+    src: "/images/portfolio-08.jpeg",
+    alt: "Podłoga EVA dopasowana do pokładu łodzi",
+  },
+  {
+    src: "/images/portfolio-09.jpeg",
+    alt: "Detal wykonania pokładu z pianki EVA",
+  },
+  {
+    src: "/images/portfolio-10.jpeg",
+    alt: "Gotowa realizacja podłogi EVA na jachcie",
+  },
+  {
+    src: "/images/portfolio-11.jpeg",
+    alt: "Pokład łodzi wykończony pianką EVA",
+  },
+  {
+    src: "/images/portfolio-12.jpeg",
+    alt: "Panele EVA wykonane na wymiar do jachtu",
+  },
+  {
+    src: "/images/portfolio-13.jpeg",
+    alt: "Realizacja jachtowej podłogi EVA",
+  },
+  {
+    src: "/images/portfolio-14.jpeg",
+    alt: "Frezowany wzór na pokładzie z pianki EVA",
+  },
+  {
+    src: "/images/portfolio-15.jpeg",
+    alt: "Wykończenie pokładu łodzi materiałem EVA",
+  },
+  {
+    src: "/images/portfolio-16.jpeg",
+    alt: "Personalizowany pokład jachtowy z pianki EVA",
+  },
+  {
+    src: "/images/portfolio-17.jpeg",
+    alt: "Zamontowana podłoga EVA na pokładzie jachtu",
+  },
+  {
+    src: "/images/portfolio-18.jpeg",
+    alt: "Estetyczne wykończenie podłogi EVA na łodzi",
+  },
+  {
+    src: "/images/portfolio-19.jpeg",
+    alt: "Kompletny pokład jachtowy z pianki EVA",
+  },
 ];
