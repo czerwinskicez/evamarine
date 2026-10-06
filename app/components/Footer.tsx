@@ -65,6 +65,15 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-center text-xs text-white/60 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} EVA Marine. Wszystkie prawa zastrzeżone.</p>
           <CookieSettingsLink />
+          <p>
+            Projekt i wykonanie:{" "}
+            <a
+              href="https://ccconsulting.pl/?utm_source=evamarine.pl&utm_medium=referral&utm_campaign=footer_credit"
+              className="underline underline-offset-4 hover:text-white"
+            >
+              CCconsulting.pl
+            </a>
+          </p>
         </div>
       </div>
     </footer>
